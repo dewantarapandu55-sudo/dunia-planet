@@ -3,119 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🌍 DUNIA PLANET - Jelajahi Tata Surya!</title>
+<title>DUNIA PLANET SUPER GALAXY</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:#050816;color:white;font-family:Arial,sans-serif;overflow-x:hidden}
-.stars{position:fixed;inset:0;z-index:-1;background:radial-gradient(2px 2px at 20% 30%,white,transparent),radial-gradient(2px 2px at 60% 70%,white,transparent),radial-gradient(1px 1px at 80% 20%,white,transparent),radial-gradient(2px 2px at 40% 80%,white,transparent);animation:twinkle 2s infinite alternate}
-@keyframes twinkle{from{opacity:.6}to{opacity:1}}
-header{text-align:center;padding:35px 15px;background:linear-gradient(180deg,#1a1a4a,transparent)}
-header h1{font-size:42px;color:#FFD700;text-shadow:0 0 20px #FFD700}
-header p{margin-top:10px;opacity:.9}
-.menu{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:10px}
-.menu button{padding:10px 18px;border:none;border-radius:20px;background:#2a2a6a;color:white;font-weight:bold;cursor:pointer}
-.menu button.active{background:#FFD700;color:black}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:15px;padding:15px;max-width:1000px;margin:auto}
-.card{background:#1a1a3a;border:2px solid #333;border-radius:20px;padding:20px;text-align:center;cursor:pointer;transition:.3s}
-.card:hover{transform:scale(1.05);border-color:#FFD700;box-shadow:0 0 20px #FFD70088}
-.card .emoji{font-size:65px;display:block;animation:float 3s infinite}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-.card h2{color:#7ee8ff;margin:10px 0 5px}
-.card p{font-size:13px;opacity:.8}
-#detail{display:none;position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:99;align-items:center;justify-content:center;padding:20px}
-#detail.show{display:flex}
-.box{background:#1e1e4a;border-radius:20px;padding:25px;max-width:450px;width:100%;text-align:center;position:relative}
-.box .big{font-size:90px}
-.box h2{color:#FFD700;margin:10px}
-.box p{line-height:1.6;margin:8px 0}
-.close{position:absolute;top:10px;right:15px;font-size:25px;cursor:pointer}
-.quiz{background:#1a1a3a;margin:20px auto;max-width:700px;border-radius:20px;padding:20px;text-align:center}
-.quiz h2{color:#FFD700;margin-bottom:15px}
-.quiz button{display:block;width:100%;margin:8px 0;padding:12px;border:none;border-radius:12px;background:#2a2a6a;color:white;cursor:pointer;font-size:15px}
-.quiz button:hover{background:#FFD700;color:black}
-footer{text-align:center;padding:20px;opacity:.6;font-size:13px}
-</style>
-</head>
-<body>
-<div class="stars"></div>
-<header>
-<h1>🌍 DUNIA PLANET 🌍</h1>
-<p>Klik planetnya untuk lihat rahasianya! 👇</p>
-</header>
-<div class="menu">
-<button class="active" onclick="filterAll(this)">Semua 🌌</button>
-<button onclick="filterPlanet('kecil',this)">Planet Kecil 🪐</button>
-<button onclick="filterPlanet('besar',this)">Planet Raksasa 💪</button>
-</div>
-<div class="grid" id="grid"></div>
-
-<div class="quiz">
-<h2>🎮 KUIS: Planet apa yang paling panas?</h2>
-<button onclick="jawab(this,false)">A. Merkurius - karena paling dekat matahari</button>
-<button onclick="jawab(this,true)">B. Venus - suhunya 465°C!</button>
-<button onclick="jawab(this,false)">C. Mars - planet merah</button>
-<p id="hasilKuis" style="margin-top:12px;font-weight:bold"></p>
-<button onclick="gantiSoal()" style="background:#FFD700;color:black;font-weight:bold">Soal Berikutnya ➡️</button>
-</div>
-
-<div id="detail"><div class="box">
-<span class="close" onclick="tutup()">✖</span>
-<div class="big" id="dEmoji"></div>
-<h2 id="dNama"></h2>
-<p id="dDesc"></p>
-<p id="dFakta" style="background:#FFD70022;padding:10px;border-radius:10px"></p>
-<p id="dJarak"></p>
-</div></div>
-
-<footer>Dibuat oleh Dewantara Pandu • Dunia Planet © 2026 🚀</footer>
-
-<script>
-const data=[
-{emoji:"☀️",nama:"Merkurius",desc:"Planet paling dekat dengan Matahari dan paling kecil.",fakta:"💡 Fakta Unik: 1 hari di Merkurius = 59 hari di Bumi!",jarak:"Jarak: 58 juta km | Suhu: 167°C",tipe:"kecil"},
-{emoji:"🟡",nama:"Venus",desc:"Planet paling panas, suhunya bisa 465 derajat!",fakta:"💡 Fakta Unik: Venus berputar terbalik! Matahari terbit dari barat!",jarak:"Jarak: 108 juta km | Suhu: 465°C",tipe:"kecil"},
-{emoji:"🌍",nama:"Bumi",desc:"Satu-satunya planet yang ada kehidupan. Rumah kita!",fakta:"💡 Fakta Unik: 70% Bumi adalah air!",jarak:"Jarak: 150 juta km | Suhu: 15°C",tipe:"kecil"},
-{emoji:"🔴",nama:"Mars",desc:"Planet merah. Calon rumah baru manusia!",fakta:"💡 Fakta Unik: Gunung tertinggi di tata surya ada di Mars!",jarak:"Jarak: 228 juta km | Suhu: -65°C",tipe:"kecil"},
-{emoji:"🟠",nama:"Jupiter",desc:"Planet TERBESAR! Bisa muat 1300 Bumi!",fakta:"💡 Fakta Unik: Badai di Jupiter sudah 300 tahun tidak berhenti!",jarak:"Jarak: 778 juta km | Suhu: -110°C",tipe:"besar"},
-{emoji:"🪐",nama:"Saturnus",desc:"Planet paling cantik karena punya cincin raksasa!",fakta:"💡 Fakta Unik: Cincin Saturnus terbuat dari es!",jarak:"Jarak: 1,4 Miliar km | Suhu: -140°C",tipe:"besar"},
-{emoji:"🔵",nama:"Uranus",desc:"Planet yang berputar sambil tiduran!",fakta:"💡 Fakta Unik: Uranus menggelinding seperti bola!",jarak:"Jarak: 2,9 Miliar km | Suhu: -195°C",tipe:"besar"},
-{emoji:"🔷",nama:"Neptunus",desc:"Planet paling jauh dan paling berangin!",fakta:"💡 Fakta Unik: Angin di Neptunus 2.100 km/jam! Lebih cepat dari pesawat!",jarak:"Jarak: 4,5 Miliar km | Suhu: -200°C",tipe:"besar"},
-];
-let tampil=data;
-function render(){
-document.getElementById('grid').innerHTML=tampil.map((p,i)=>`<div class="card" onclick="buka(${data.indexOf(p)})"><span class="emoji">${p.emoji}</span><h2>${p.nama}</h2><p>${p.desc}</p><p style="color:#FFD700;margin-top:8px">Klik untuk detail ➡️</p></div>`).join('');
-}
-function buka(i){
-let p=data[i];
-document.getElementById('dEmoji').innerText=p.emoji;
-document.getElementById('dNama').innerText=p.nama;
-document.getElementById('dDesc').innerText=p.desc;
-document.getElementById('dFakta').innerText=p.fakta;
-document.getElementById('dJarak').innerText=p.jarak;
-document.getElementById('detail').classList.add('show');
-}
-function tutup(){document.getElementById('detail').classList.remove('show')}
-function filterAll(b){tampil=data;setActive(b);render()}
-function filterPlanet(t,b){tampil=data.filter(x=>x.tipe===t);setActive(b);render()}
-function setActive(b){document.querySelectorAll('.menu button').forEach(x=>x.classList.remove('active'));b.classList.add('active')}
-function jawab(btn,benar){
-document.getElementById('hasilKuis').innerText=benar?"✅ BENAR! Kamu jenius! 🎉":"❌ Salah, coba lagi! Semangat!";
-document.getElementById('hasilKuis').style.color=benar?"#00ff88":"#ff5555";
-}
-const soal=[
-{q:"Planet apa yang kita tinggali?",a:["Mars","Bumi","Venus"],benar:1},
-{q:"Planet apa yang punya cincin paling cantik?",a:["Jupiter","Neptunus","Saturnus"],benar:2},
-{q:"Planet apa yang paling besar?",a:["Jupiter","Bumi","Mars"],benar:0},
-];
-let idx=0;
-function gantiSoal(){
-idx=(idx+1)%soal.length;let s=soal[idx];
-let h=document.querySelector('.quiz h2');h.innerText="🎮 KUIS: "+s.q;
-let btns=document.querySelectorAll('.quiz button');
-btns[0].innerText="A. "+s.a[0];btns[1].innerText="B. "+s.a[1];btns[2].innerText="C. "+s.a[2];
-btns[0].onclick=()=>jawab(btns[0],s.benar===0);btns[1].onclick=()=>jawab(btns[1],s.benar===1);btns[2].onclick=()=>jawab(btns[2],s.benar===2);
-document.getElementById('hasilKuis').innerText="";
-}
-render();
-</script>
-</body>
-</html>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}
+body{background:#050510;color:white;min-height:100vh;overflow-x:hidden;position:relative}
+.stars{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.star{position:absolute;background:white;border-radius:50%;animation:twinkle 2s infinite}
+@keyframes twinkle{0%,100%{opacity:.2;transform:scale(.8)}50%{opacity:1;transform:scale(1.2)}}
+.shooting{position:fixed;width:120px;height:3px;background:linear-gradient(90deg,white,transparent);border-radius:10px;transform:rotate(-30deg);animation:shoot 4s infinite;z-index:0;pointer-events:none;opacity:0}
+@keyframes shoot{0%{top:10%;left:90%;opacity:0}5%{opacity:1}15%{top:35%;left:55%;opacity:0}100%{opacity:0}}
+header{text-align:center;padding:30px 15px;position:relative;z-index:1}
+h1{font-size:42px;color:#FFD700;text-shadow:0 0 20px #FFD700,0 0 40px orange;animation:bounce 2s infinite}
+@keyframes bounce{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+p.sub{color:#ccc;margin-top:8px}
+.filter{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:15px}
+.filter button{padding:10px 18
