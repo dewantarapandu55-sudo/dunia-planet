@@ -3,60 +3,51 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DUNIA PLANET - Penjelasan Lengkap</title>
+<title>Dunia Lautan 🌊</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}
-body{background:#050510;color:white;min-height:100vh}
-header{text-align:center;padding:30px 15px}
-h1{font-size:38px;color:#FFD700;text-shadow:0 0 20px #FFD700}
-p.sub{color:#ccc;margin-top:8px}
-.filter{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:10px}
-.filter button{padding:10px 18px;border-radius:20px;border:2px solid #FFD700;background:#1a1a3a;color:white;font-weight:bold;cursor:pointer}
-.filter button.active{background:#FFD700;color:black}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:15px;padding:15px;max-width:1000px;margin:auto}
-.card{background:linear-gradient(145deg,#1e1e4a,#2a2a6a);border:2px solid #4444aa;border-radius:20px;padding:18px;text-align:center;cursor:pointer;animation:float 3s infinite}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-.card:hover{transform:scale(1.07);border-color:#FFD700;box-shadow:0 0 20px #FFD700}
-.emoji{font-size:60px;display:block}
-.card h3{color:#FFD700;margin:8px 0}
-.card p{font-size:12px;color:#ddd}
-.badge{display:inline-block;background:#FFD700;color:black;font-size:11px;padding:3px 8px;border-radius:10px;font-weight:bold;margin-top:8px}
-#detail{background:#1a1a3a;border:2px solid #FFD700;border-radius:20px;padding:22px;margin:20px auto;max-width:650px;display:none;line-height:1.7}
-#detail h2{color:#FFD700;font-size:28px;text-align:center}
-#detail .big{font-size:70px;text-align:center;display:block}
-.info{background:#0d0d2a;padding:12px;border-radius:12px;margin:10px 0}
-.info b{color:#00ffcc}
-.quiz{background:#1a1a3a;border:2px solid #00ffcc;border-radius:20px;padding:20px;margin:20px auto;max-width:650px;text-align:center}
-.quiz h2{color:#00ffcc}
-.quiz button{display:block;width:100%;padding:12px;margin:8px 0;border-radius:12px;border:none;background:white;font-weight:bold;cursor:pointer}
-.quiz button:hover{background:#00ffcc}
+body{margin:0;font-family:Arial;background:#001f3f;color:white;text-align:center}
+header{padding:20px;background:linear-gradient(#00bfff,#001f3f)}
+h1{font-size:32px;margin:0}
+p{opacity:.9}
+.grid{display:flex;flex-wrap:wrap;justify-content:center;gap:15px;padding:20px}
+.card{background:white;color:#001f3f;width:140px;border-radius:20px;padding:15px;cursor:pointer;box-shadow:0 5px 15px rgba(0,0,0,.3)}
+.card .emoji{font-size:55px}
+.card b{font-size:18px}
+#detail{background:white;color:#001f3f;margin:15px;border-radius:25px;padding:20px;text-align:left;display:none}
+#detail .big{font-size:90px;text-align:center}
+#detail h2{text-align:center;font-size:28px;margin:5px}
+.info{background:#e0f7ff;border-radius:15px;padding:12px;margin-top:10px}
+.info b{color:#0077b6}
+button{background:#00bfff;border:0;padding:12px 20px;border-radius:20px;font-size:16px;font-weight:bold;color:white;cursor:pointer;width:100%}
 </style>
 </head>
 <body>
-<header><h1>🌍 DUNIA PLANET 📚</h1><p class="sub">Klik planet untuk baca penjelasan lengkapnya!</p></header>
-<div class="filter"><button class="active" onclick="filterP('semua',this)">✨ Semua</button><button onclick="filterP('kecil',this)">🪨 Kecil</button><button onclick="filterP('raksasa',this)">🪐 Raksasa</button></div>
-<div class="grid" id="grid"></div>
+<header>
+<h1>🌊 DUNIA LAUTAN 🐬</h1>
+<p>Klik hewan lautnya untuk lihat penjelasannya!</p>
+</header>
+
+<div class="grid">
+<div class="card" onclick="show('hiu')"><div class="emoji">🦈</div><b>Hiu</b><br>Pemburu Laut</div>
+<div class="card" onclick="show('paus')"><div class="emoji">🐳</div><b>Paus</b><br>Raksasa Baik</div>
+<div class="card" onclick="show('lumba')"><div class="emoji">🐬</div><b>Lumba-lumba</b><br>Paling Pintar</div>
+<div class="card" onclick="show('gurita')"><div class="emoji">🐙</div><b>Gurita</b><br>8 Tangan</div>
+<div class="card" onclick="show('penyu')"><div class="emoji">🐢</div><b>Penyu</b><br>Bisa 100 Tahun</div>
+<div class="card" onclick="show('nemo')"><div class="emoji">🐠</div><b>Ikan Badut</b><br>Si Nemo</div>
+<div class="card" onclick="show('ubur')"><div class="emoji">🪼</div><b>Ubur-ubur</b><br>Tanpa Tulang</div>
+<div class="card" onclick="show('kepiting')"><div class="emoji">🦀</div><b>Kepiting</b><br>Jalan Samping</div>
+<div class="card" onclick="show('bintang')"><div class="emoji">⭐</div><b>Bintang Laut</b><br>Bisa Tumbuh Lagi</div>
+<div class="card" onclick="show('kuda')"><div class="emoji">🐴</div><b>Kuda Laut</b><br>Berdiri Tegak</div>
+</div>
+
 <div id="detail"></div>
-<div class="quiz"><h2>🎮 KUIS PLANET</h2><p id="q"></p><div id="opts"></div><p id="score" style="color:#FFD700;font-weight:bold">Skor: 0</p></div>
+
 <script>
-const data=[
-{nama:"Merkurius",emoji:"☀️",tipe:"kecil",singkat:"Paling dekat Matahari!",penjelasan:"Merkurius adalah planet paling kecil dan paling dekat dengan Matahari. Siangnya panas banget sampai 430°C, tapi malamnya dingin beku -180°C! Karena dekat Matahari, planet ini jalannya paling cepat.",jarak:"57,9 Juta Km dari Matahari",ukuran:"Diameter 4.879 Km - Paling Kecil!",suhu:"Siang 430°C, Malam -180°C",hari:"1 Hari = 59 Hari Bumi",tahun:"1 Tahun = 88 Hari",fakta:"Kalau kamu di Merkurius, kamu bisa lihat Matahari terbit 2 kali!"},
-{nama:"Venus",emoji:"🟠",tipe:"kecil",singkat:"Planet paling panas!",penjelasan:"Venus disebut kembaran Bumi karena ukurannya hampir sama. Tapi jangan tertipu! Venus adalah planet PALING PANAS di Tata Surya, 465°C! Awan nya terbuat dari asam yang bisa melelehkan besi. Venus juga berputar terbalik, Matahari terbit dari barat!",jarak:"108,2 Juta Km",ukuran:"Diameter 12.104 Km - Hampir sama Bumi",suhu:"465°C - Paling Panas!",hari:"1 Hari = 243 Hari Bumi",tahun:"1 Tahun = 225 Hari",fakta:"Di Venus, 1 hari lebih lama dari 1 tahun!"},
-{nama:"Bumi",emoji:"🌍",tipe:"kecil",singkat:"Rumah kita tercinta!",penjelasan:"Bumi adalah satu-satunya planet yang diketahui ada kehidupan! Kenapa? Karena Bumi punya air, udara, dan jarak yang PAS dari Matahari, tidak terlalu panas, tidak terlalu dingin. 71% Bumi adalah laut. Bumi juga punya 1 Bulan yang setia menemani.",jarak:"149,6 Juta Km - Pas Banget!",ukuran:"Diameter 12.742 Km",suhu:"Rata-rata 15°C - Nyaman!",hari:"1 Hari = 24 Jam",tahun:"1 Tahun = 365 Hari",fakta:"Bumi bukan bulat sempurna, tapi agak pepat di kutub!"},
-{nama:"Mars",emoji:"🔴",tipe:"kecil",singkat:"Planet Merah!",penjelasan:"Mars berwarna merah karena tanahnya penuh karat besi! Mars punya gunung tertinggi di Tata Surya, namanya Olympus Mons, tingginya 21 Km, 2x lebih tinggi dari Gunung Everest! Para ilmuwan percaya dulu Mars pernah ada air dan mungkin ada kehidupan.",jarak:"227,9 Juta Km",ukuran:"Diameter 6.779 Km",suhu:"Rata-rata -65°C - Dingin!",hari:"1 Hari = 24,6 Jam - Hampir sama Bumi!",tahun:"1 Tahun = 687 Hari",fakta:"Ada robot NASA yang lagi jalan-jalan di Mars sekarang!"},
-{nama:"Jupiter",emoji:"🟤",tipe:"raksasa",singkat:"Raksasa Terbesar!",penjelasan:"Jupiter adalah RAJA planet! Saking besarnya, 1.300 Bumi bisa masuk ke dalam Jupiter! Jupiter punya badai raksasa yang disebut Bintik Merah Besar, badainya sudah berlangsung 300 tahun dan lebih besar dari Bumi! Jupiter melindungi Bumi dari asteroid.",jarak:"778,5 Juta Km",ukuran:"Diameter 139.820 Km - TERBESAR!",suhu:"-110°C",hari:"1 Hari = 10 Jam - Paling Cepat!",tahun:"1 Tahun = 12 Tahun Bumi",fakta:"Jupiter punya 95 Bulan! Bulan terbesarnya namanya Ganymede."},
-{nama:"Saturnus",emoji:"🪐",tipe:"raksasa",singkat:"Si Cantik Bercincin!",penjelasan:"Saturnus adalah planet paling cantik karena punya cincin yang terbuat dari miliaran potongan es! Cincinnya sangat lebar, 280.000 Km, tapi tipis banget, cuma 10 meter! Kalau ada lautan cukup besar, Saturnus bisa mengapung karena planet ini sangat ringan.",jarak:"1,43 Miliar Km",ukuran:"Diameter 116.460 Km",suhu:"-140°C",hari:"1 Hari = 10,7 Jam",tahun:"1 Tahun = 29 Tahun Bumi",fakta:"Cincin Saturnus terbuat dari es yang berkilau!"},
-{nama:"Uranus",emoji:"🔵",tipe:"raksasa",singkat:"Planet yang Tiduran!",penjelasan:"Uranus adalah planet yang aneh dan lucu! Dia berputar sambil tiduran, miring 98 derajat! Jadi kutubnya menghadap Matahari. Warna birunya yang cantik berasal dari gas metana. Uranus adalah planet paling dingin, bisa sampai -224°C!",jarak:"2,87 Miliar Km",ukuran:"Diameter 50.724 Km",suhu:"-195°C - Paling Dingin!",hari:"1 Hari = 17 Jam (Terbalik)",tahun:"1 Tahun = 84 Tahun Bumi",fakta:"Uranus menggelinding seperti bola saat mengorbit!"},
-{nama:"Neptunus",emoji:"🔷",tipe:"raksasa",singkat:"Planet Paling Jauh & Berangin!",penjelasan:"Neptunus adalah planet paling jauh dari Matahari. Anginnya adalah yang TERKUAT di Tata Surya, kecepatannya 2.100 Km/jam! Itu 10x lebih cepat dari badai terkuat di Bumi! Warna biru tuanya sangat indah.",jarak:"4,50 Miliar Km - Paling Jauh!",ukuran:"Diameter 49.244 Km",suhu:"-200°C",hari:"1 Hari = 16 Jam",tahun:"1 Tahun = 165 Tahun Bumi",fakta:"1 Tahun di Neptunus = Kamu sudah jadi kakek-kakek di Bumi!"}
-];
-let skor=0;
-function render(f="semua"){let g=document.getElementById('grid');g.innerHTML='';data.filter(d=>f==='semua'||d.tipe===f).forEach(d=>{g.innerHTML+=`<div class="card" onclick="show('${d.nama}')"><span class="emoji">${d.emoji}</span><h3>${d.nama}</h3><p>${d.singkat}</p><span class="badge">${d.tipe==='kecil'?'🪨 KECIL':'🪐 RAKSASA'}</span></div>`});}
-function show(n){let d=data.find(x=>x.nama===n);let e=document.getElementById('detail');e.style.display='block';e.innerHTML=`<span class="big">${d.emoji}</span><h2>${d.nama}</h2><p style="text-align:center">${d.penjelasan}</p><div class="info">📍 <b>Jarak:</b> ${d.jarak}<br>📏 <b>Ukuran:</b> ${d.ukuran}<br>🌡️ <b>Suhu:</b> ${d.suhu}<br>🕐 <b>1 Hari:</b> ${d.hari}<br>📅 <b>1 Tahun:</b> ${d.tahun}<br><br>✨ <b>Fakta Keren:</b> ${d.fakta}</div><button onclick="document.getElementById('detail').style.display='none'" style="display:block;margin:auto;padding:10px 25px;border-radius:20px;border:none;background:#FFD700;font-weight:bold;cursor:pointer">Tutup ❌</button>`;e.scrollIntoView({behavior:'smooth'});}
-function filterP(t,b){document.querySelectorAll('.filter button').forEach(x=>x.classList.remove('active'));b.classList.add('active');render(t);}
-let qs=[{q:"Planet mana yang paling panas?",o:["Merkurius","Venus","Mars"],a:1},{q:"Planet mana rumah kita?",o:["Jupiter","Bumi","Saturnus"],a:1},{q:"Planet mana yang punya cincin paling cantik?",o:["Saturnus","Venus","Mars"],a:0},{q:"Planet mana yang TERBESAR?",o:["Neptunus","Jupiter","Bumi"],a:1}];let qi=0;
-function loadQ(){if(qi>=qs.length){document.getElementById('q').innerText="🎉 SELESAI! Kamu Master Planet!";document.getElementById('opts').innerHTML=`<button onclick="qi=0;skor=0;document.getElementById('score').innerText='Skor: 0';loadQ()">Main Lagi 🔄</button>`;return;}let q=qs[qi];document.getElementById('q').innerText=q.q;document.getElementById('opts').innerHTML=q.o.map((o,i)=>`<button onclick="jawab(${i})">${o}</button>`).join('');}
-function jawab(i){if(i===qs[qi].a){skor+=10;alert("✅ BENAR! +10");}else{alert("❌ Coba lagi! Baca penjelasan di atas ya!");}qi++;document.getElementById('score').innerText="Skor: "+skor;loadQ();}
-render();loadQ();
-</script>
-</body>
-</html>
+const data={
+hiu:{e:'🦈',t:'Hiu',d:'Hiu adalah pemburu paling hebat di laut! Giginya tajam banget dan bisa tumbuh terus kalau patah. Tapi jangan takut, hiu tidak suka makan manusia, dia lebih suka makan ikan.',f:'Fakta Seru: Hiu sudah ada sebelum Dinosaurus!',m:'Makan: Ikan, Cumi-cumi',u:'Ukuran: Sampai 6 Meter',s:'Sifat: Cepat & Pemberani'},
+paus:{e:'🐳',t:'Paus Biru',d:'Ini hewan TERBESAR di dunia! Lebih besar dari 20 gajah! Meskipun gede banget, paus ini baik hati dan makannya cuma udang kecil yang namanya Krill.',f:'Fakta Seru: Suara paus bisa kedengeran sampai 1600 km!',m:'Makan: Udang Kecil (Krill)',u:'Ukuran: Sampai 30 Meter',s:'Sifat: Lembut & Baik'},
+lumba:{e:'🐬',t:'Lumba-lumba',d:'Lumba-lumba itu hewan paling pintar di laut! Dia bisa belajar trik, suka lompat-lompat, dan suka bantuin temannya yang sakit. Dia juga suka main sama manusia!',f:'Fakta Seru: Lumba-lumba tidur dengan satu mata terbuka!',m:'Makan: Ikan Kecil',u:'Ukuran: 2 - 3 Meter',s:'Sifat: Pintar & Ramah'},
+gurita:{e:'🐙',t:'Gurita',d:'Gurita punya 8 tangan dan 3 jantung! Kalau ada musuh, dia bisa nyemprotin tinta hitam biar bisa kabur. Dia juga jago banget ngumpet!',f:'Fakta Seru: Gurita bisa ganti warna kulitnya!',m:'Makan: Kepiting, Udang',u:'Ukuran: Sampai 5 Meter',s:'Sifat: Cerdik & Pemalu'},
+penyu:{e:'🐢',t:'Penyu',d:'Penyu itu perenang yang hebat dan bisa hidup sampai 100 tahun! Dia lahir di pantai, terus berenang jauh ke tengah laut. Kalau sudah besar, dia balik lagi ke pantai tempat dia lahir.',f:'Fakta Seru: Penyu bisa menahan napas 5 jam!',m:'Makan: Rumput Laut, Ubur-ubur',u:'Ukuran: Sampai 1,5 Meter',s:'Sifat: Tenang & Sabar'},
+nemo:{e:'🐠',t:'Ikan Badut / Nemo',d:'Ini si Nemo! Warna orange putihnya lucu banget. Dia tinggal di dalam Anemon, hewan laut yang seperti bunga tapi bisa menyengat. Tapi Nemo kebal, jadi dia aman!',f:'Fakta Seru: Nemo dan Ayahnya tinggal di Anemon beracun!',m:'Makan: Plankton Kecil',u:'Ukuran: Cuma 11 cm',s:'Sifat: Lucu & Pemberani'},
+ubur:{e:'🪼',t:'Ubur-ubur',d:'Ubur-ubur itu aneh tapi keren! Badannya 95% air, tidak punya tulang, tidak punya otak, tapi dia masih bisa hidup! Ada yang bisa menyala di kegelapan!',f:'Fakta Seru: Ada ubur-ubur yang bisa hidup selamanya!',m:'Makan: Plankton',u:'Ukuran: 2cm - 2 Meter',s:'S
